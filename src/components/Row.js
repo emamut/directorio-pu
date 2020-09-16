@@ -7,9 +7,9 @@ import { faVideo } from '@fortawesome/free-solid-svg-icons';
 function Row(props) {
   return (
     <tr className="border">
-      <td className="text-lg">{props.item.name}</td>
+      <td className="text-lg px-4 py-2">{props.item.name}</td>
       <td>{props.item.class}</td>
-      <td className="text-center">
+      <td className="text-center px-4 py-2">
         <a
           className="text-blue-400 hover:text-gray-600"
           href={'https://us02web.zoom.us/j/' + props.item.zoom}
@@ -19,9 +19,9 @@ function Row(props) {
           <FontAwesomeIcon icon={faVideo} size={'2x'} />
         </a>
       </td>
-      <td className="text-center">
+      <td className="text-center px-4 py-2">
         <a
-          className="text-blue-400 hover:text-gray-600"
+          className="text-green-500 hover:text-gray-600"
           href={'https://api.whatsapp.com/send?phone=' + props.item.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
