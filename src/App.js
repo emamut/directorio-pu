@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import image from './img/8B.png';
+
+import Row from './components/Row';
 
 const gistURL =
   'https://gist.githubusercontent.com/emamut/86b0b780d790fab63a9138baa313a496/raw/ed25d10c9fd5acb4047820e713101015b2b03c50/directorio-pu.json';
@@ -19,44 +22,24 @@ function App() {
         </div>
       </div>
       <div className="flex mt-3">
+        <div className="flex-1 w-full">
+          <img src={image} alt="" className="w-100 mx-auto" />
+        </div>
+      </div>
+      <div className="flex mt-3">
         <div className="w-full">
           <table className="table-auto mx-auto">
             <thead>
-              <tr>
+              <tr className="bg-gray-800 text-white">
                 <th className="border px-4 py-2">Profesor</th>
                 <th className="border px-4 py-2">Materia</th>
-                <th className="border px-4 py-2">Link a Zoom</th>
-                <th className="border px-4 py-2">Link a Whatsapp</th>
+                <th className="border px-4 py-2">Zoom</th>
+                <th className="border px-4 py-2">Whatsapp</th>
               </tr>
             </thead>
             <tbody>
               {responseData.map((item, key) => (
-                <tr className="border" key={key}>
-                  <td className="text-lg">{item.name}</td>
-                  <td>{item.class}</td>
-                  <td className="text-center">
-                    <a
-                      className="text-blue-400 hover:text-gray-600"
-                      href={'https://us02web.zoom.us/j/' + item.zoom}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Zoom
-                    </a>
-                  </td>
-                  <td className="text-center">
-                    <a
-                      className="text-blue-400 hover:text-gray-600"
-                      href={
-                        'https://api.whatsapp.com/send?phone=' + item.whatsapp
-                      }
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Whatsapp
-                    </a>
-                  </td>
-                </tr>
+                <Row key={key} item={item} />
               ))}
             </tbody>
           </table>
