@@ -1,18 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { useQuery } from 'graphql-hooks';
 import image from './img/8B.png';
 
 import Row from './components/Row';
 
-const gistURL =
-  'https://gist.githubusercontent.com/emamut/86b0b780d790fab63a9138baa313a496/raw/ed25d10c9fd5acb4047820e713101015b2b03c50/directorio-pu.json';
+const HOMEPAGE_QUERY = `query HomePage($limit: IntType) {
+  allProfesors(first: $limit) {
+    name
+    class
+    whatsapp
+    zoom
+  }
+}`;
 
 function App() {
-  const [responseData, setResponseData] = useState([{}]);
-
-  useEffect(() => {
-    axios.get(gistURL).then((response) => setResponseData(response.data));
-  }, [setResponseData, responseData]);
+  const { loading, error, data } = useQuery(HOMEPAGE_QUERY, {
+    variables: {
+      limit: 10,
+    },
+  });
+  if (loading) return 'Loading...';
+  if (error) return 'Something Bad Happened';
 
   return (
     <div className="container mx-auto">
@@ -38,7 +46,7 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              {responseData.map((item, key) => (
+              {data.allProfesors.map((item, key) => (
                 <Row key={key} item={item} />
               ))}
             </tbody>
