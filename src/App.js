@@ -32,7 +32,7 @@ function App() {
       </div>
       <div className="flex mt-3">
         <div className="flex-1 w-full">
-          <img src={image} alt="" className="w-full mx-auto" />
+          <img src={image} alt="" className="w-100 mx-auto" />
         </div>
       </div>
       <div className="flex mt-3">
