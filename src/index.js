@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './tailwind.output.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { GraphQLClient, ClientContext } from 'graphql-hooks';
+
+import './tailwind.output.css';
+import 'typeface-architects-daughter';
 
 const client = new GraphQLClient({
   url: 'https://graphql.datocms.com/',
