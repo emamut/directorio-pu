@@ -24,10 +24,12 @@ function App() {
   if (error) return 'Something Bad Happened';
 
   return (
-    <div className="container mx-auto">
-      <div className="flex mt-5">
+    <>
+      <div className="flex bg-indigo-600 py-2 mb-3">
         <div className="w-full">
-          <h1 className="text-center text-5xl">Directorio 8B</h1>
+          <h1 className="text-center text-white text-5xl font-architects-daughter">
+            Directorio 8B
+          </h1>
         </div>
       </div>
       <div className="flex mt-3">
@@ -54,7 +56,7 @@ function App() {
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
