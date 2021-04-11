@@ -1,62 +1,20 @@
 import React from 'react';
-import { useQuery } from 'graphql-hooks';
-import image from './img/8B.png';
-
-import Row from './components/Row';
-
-const HOMEPAGE_QUERY = `query HomePage($limit: IntType) {
-  allProfesors(first: $limit) {
-    name
-    class
-    whatsapp
-    zoom
-  }
-}`;
 
 function App() {
-  const { loading, error, data } = useQuery(HOMEPAGE_QUERY, {
-    variables: {
-      limit: 10,
-    },
-  });
-
-  if (loading) return 'Loading...';
-  if (error) return 'Something Bad Happened';
-
   return (
-    <>
-      <div className="flex bg-indigo-600 py-2 mb-3">
-        <div className="w-full">
-          <h1 className="text-center text-white text-5xl font-architects-daughter">
-            Directorio 8B
-          </h1>
-        </div>
+    <div className="grid grid-cols-12 mt-16">
+      <div className="col-start-2 col-span-10">
+        <h1 className="text-4xl text-center font-architects-daughter">
+          Nos mudamos a{' '}
+          <a
+            href="https://tuhorariovirtual.vercel.app/schedule/pu/8b"
+            className="text-purple-800 font-bold underline"
+          >
+            Tu Horario Virtual
+          </a>
+        </h1>
       </div>
-      <div className="flex mt-3">
-        <div className="flex-1 w-full">
-          <img src={image} alt="" className="w-100 mx-auto" />
-        </div>
-      </div>
-      <div className="flex mt-3">
-        <div className="w-full">
-          <table className="table-auto mx-auto">
-            <thead>
-              <tr className="bg-gray-800 text-white">
-                <th className="border px-4 py-2">Profesor</th>
-                <th className="border px-4 py-2">Materia</th>
-                <th className="border px-4 py-2">Zoom</th>
-                <th className="border px-4 py-2">Whatsapp</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.allProfesors.map((item, key) => (
-                <Row key={key} item={item} />
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </>
+    </div>
   );
 }
 
